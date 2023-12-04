@@ -1,3 +1,14 @@
+2. DB 구축을 위한 sequelize 모듈 설치 
+2-1.
+/backend> npm install mysql2 sequelize-cli sequelize
+설치 완료.
+
+2-2.
+sequelize 모듈을 이용한 기본 설정 파일 생성 및 모델, 디렉토리 생성 
+/backend> npx sequelize init
+생성 완료.
+불필요 파일 /migrations, /seeders 두 폴더 삭제.
+
 1.
 1-1.
 frontend/ 디렉토리와
