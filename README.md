@@ -1,3 +1,15 @@
+3. express 프레임워크에 필요한 기본 모듈 설치
+3-1.
+/backend> npm install express cookie-parser express-session dotenv nunjucks
+/backend> npm install -D nodemon
+설치 완료.
+
+3-2.
+/backend/publicdir 에 index.html 파일 생성 및 기본 코드 작성
+/backend에 server.js 파일 새성 및 express 기본 코드 작성
+/backend> npm start 
+( 5000포트 기본 동작 확인 )
+
 2. DB 구축을 위한 sequelize 모듈 설치 
 2-1.
 /backend> npm install mysql2 sequelize-cli sequelize
