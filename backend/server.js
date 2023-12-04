@@ -1,5 +1,6 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
+const morgan = require('morgan');
 const path = require('path');
 const session = require('express-session');
 const nunjucks = require('nunjucks');
@@ -15,7 +16,15 @@ nunjucks.configure('views',{
   express:app,
   watch: true
 });
+sequelize.sync({ force: false })
+  .then(() => {
+    console.log('========데이터베이스 연결 성공했습니다.=======');
+  })
+  .catch((err) => {
+    console.error(err);
+  });
 
+app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, 'publicdir')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

@@ -1,3 +1,21 @@
+4. 더 많은 로그 정보 출력을 위한 morgan 모듈 설치+mysql 설치, sequelize 설정
+4-1.
+/backend> npm install morgan
+설치 완료.
+
+4-2. mysql 설치 및 express_db DB 생성
+mysql 접속 및 express_db 생성.
+/models/index.js 파일 변경(sequelize 객체 생성을 위한)
+/config/config.json 파일 수정(development에 DB 이름, user 이름, user pw 저장 )
+
+4-3. morgan 미들웨어 + sequelize 초기화를 위한 server.js 파일 수정
+/backend/server.js 파일 수정
+
+4-4. 실행 확인.
+/backend> npm start
+실행 및 DB 생성 확인.
+
+
 3. express 프레임워크에 필요한 기본 모듈 설치
 3-1.
 /backend> npm install express cookie-parser express-session dotenv nunjucks
