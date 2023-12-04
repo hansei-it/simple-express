@@ -1,3 +1,20 @@
+5. 라우트 테스하기
+5-1.
+라우트 테스트 추가. 
+/backend/routes 디렉토리 생성 및 index.js 파일 생성 작성.
+/backend/routes/test1.js 파일 생성 작성.
+/backend/routes/test2.js 파일 생성 작성.
+
+5-2.
+/(루트) 패스의 express.static 모듈 index.html 정적파일을 /routes/index.js로 대체할 예정.
+/test1 패스의 라우트는 /routes/test1.js의 get()과 post()로 구현( postman 사용하여 코드 테스트)
+/test2 패스의 라우트는 /routes/test2.js의 get()과 post()로 구현( postman 사용하여 코드 테스트)
+server.js 파일에 라우트 모듈 로드와 라우트 미들웨어 설정
+
+5-3. 
+에러 발생시 에러 send() 할 수 있도록 코드 변경.
+.env 파일의 COOKIE_SECRET=first_cookie_secret 추가.(세션 모듈에서 사용하므로..)
+
 4. 더 많은 로그 정보 출력을 위한 morgan 모듈 설치+mysql 설치, sequelize 설정
 4-1.
 /backend> npm install morgan

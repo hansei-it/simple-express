@@ -9,6 +9,10 @@ const dotenv = require('dotenv');
 dotenv.config();
 const { sequelize } = require('./models');
 
+const indexRouter = require('./routes');
+const test1Router = require('./routes/test1');
+const test2Router = require('./routes/test2');
+
 const app = express();
 app.set('port', process.env.PORT || 5000);
 app.set('view engine', 'html');
@@ -39,6 +43,10 @@ app.use(session({
   },
 }));
 
+app.use('/', indexRouter);
+app.use('/test1', test1Router);
+app.use('/test2', test2Router);
+
 app.use((req, res, next) => {
   const error =  new Error(`${req.method} ${req.url} 라우터가 없습니다.`);
   error.status = 404;
@@ -49,7 +57,8 @@ app.use((err, req, res, next) => {
   res.locals.message = err.message;
   res.locals.error = process.env.NODE_ENV !== 'production' ? err : {};
   res.status(err.status || 500);
-  res.render('error');
+  //res.render('error');
+  res.send(res.locals.error);
 });
 
 app.listen(app.get('port'), () => {
