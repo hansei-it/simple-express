@@ -1,3 +1,34 @@
+9. 회원등록 및 로그인 처리를 위한 passport 모듈 추가 및 구현
+
+npm install passport passport-local bcrypt 설치
+passport 폴더 생성.
+/passport/localStrategy.js, /passport/index.js 생성 및 구현.
+/routes/auth.js 생성, 구현(회원 가입, 로그인, 로그아웃 라우터)
+/lib/middlewares.js  생성, 구현(로그인 권한 체킹을 위한 미들웨어.  DB의 user.js 모델 userkey와 password를 포함하도록 수정)
+
+DB ORM 모델인 /models/user.js모듈의 User 모델에 password를 추가하도록 수정 및 name의 allowNull: true 변경,  age의 allowNull: true, nuique 옵션 제거.
+     password: {
+        type: Sequelize.STRING(100),
+        allowNull: true,
+      },
+      name: {
+        type: Sequelize.STRING(20),
+        allowNull: true,
+      },
+      age: {
+        type: Sequelize.INTEGER.UNSIGNED,
+        allowNull: true,
+      },
+
+server.js 수정(passport모듈 추가, 설정 + auth모듈 및 auth 라우트 추가)
+
+========= 
+로그인 확인을 위한 "Postman 테스트" (localhost:5000)
+회원 가입:  POST (/auth/join) userkey = aaaa password = aaa 
+로그인: POST (/auth/login) userkey = aaaa password = aaa 
+로그아웃: GET (/auth/logout)
+
+
 8. sequelize 이용한 CRUD ORM 모델 파일 생성(user.js, comment.js)과 ORM 관계 설정(index.js)
 
 유정정보(user.js) ORM과 댓글 정보(comment.js) ORM 모듈 생성및 작성.
