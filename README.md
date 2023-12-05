@@ -1,3 +1,9 @@
+8. sequelize 이용한 CRUD ORM 모델 파일 생성(user.js, comment.js)과 ORM 관계 설정(index.js)
+
+유정정보(user.js) ORM과 댓글 정보(comment.js) ORM 모듈 생성및 작성.
+index.js 관계 설정.
+화면 및 mysql 상의 테이블 생성 확인.
+
 7. nunjucks 템플릿 엔진 추가 및 테스트
 
 views 폴더 생성
