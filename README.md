@@ -1,3 +1,20 @@
+7. nunjucks 템플릿 엔진 추가 및 테스트
+
+views 폴더 생성
+템플릿 data.html, viewa1.html, viewa2.html 생성
+
+data/index.js
+data/a1.js
+data/a2.js 파일 랜더링 코드로 변경(res.render('data', { title: '/data root', data:'data 패스의 html을 랜더링 합니다.' });)
+
+server.js 파일에 
+app.set('view engine', 'html');
+nunjucks.configure('views',{
+  express:app,
+  watch: true
+}); 을 확인
+
+
 6. 라우트 추가하기 (/routes/data, /routes/data/a1.js, /routes/data/a2.js) 폴더와 파일 추가
 
 각 라우터 파일(/routes/data/index.js, /routes/data/a1.js, /routes/data/a2.js)에 
