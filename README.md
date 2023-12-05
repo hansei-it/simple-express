@@ -1,4 +1,15 @@
-5. 라우트 테스하기
+6. 라우트 추가하기 (/routes/data, /routes/data/a1.js, /routes/data/a2.js) 폴더와 파일 추가
+
+각 라우터 파일(/routes/data/index.js, /routes/data/a1.js, /routes/data/a2.js)에 
+get()과 post() 예제 코드 파일 작성.
+server.js 파일 수정(라우터 모듈 추가 및 미들웨어 설치)
+
+http://localhost:5000/data 실행확인
+http://localhost:5000/data/a1 실행확인
+http://localhost:5000/data/a2 실행확인
+post()는 postman으로 실행확인
+
+5. 라우트 테스트하기
 5-1.
 라우트 테스트 추가. 
 /backend/routes 디렉토리 생성 및 index.js 파일 생성 작성.
