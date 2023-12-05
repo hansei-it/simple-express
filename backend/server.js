@@ -36,7 +36,7 @@ sequelize.sync({ force: false })
   });
 
 app.use(morgan('dev'));
-app.use(express.static(path.join(__dirname, 'publicdir')));
+//app.use(express.static(path.join(__dirname, 'publicdir')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser(process.env.COOKIE_SECRET));
@@ -49,8 +49,14 @@ app.use(session({
     secure: false,
   },
 }));
-app.use(passport.initialize()); // req 객체에 possprot 설정
-app.use(passport.session());    // req.session 객체에 passport 정보 저장
+app.use(passport.initialize(),(req,res,next)=>{
+  console.log("++++++ passport.initialize()");
+  next();
+}); // req 객체에 req.session 을 검사하고 req.session.possprot.user를 추가, req.isAuthenticated, req.login, req.logout 등 추가 설정하는 미들웨어
+app.use(passport.session(),(req,res,next)=>{
+  console.log("++++++ passport.session()");
+  next();
+});    // 로그인 후 passport.deserializeUer()를 매번 호출정보 저장 미들웨어
 
 app.use('/', indexRouter);
 app.use('/test1', test1Router);

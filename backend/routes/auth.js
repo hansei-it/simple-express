@@ -29,8 +29,10 @@ router.post('/join', isNotLoggedIn, async (req, res, next) => {
 });
 
 router.post('/login', isNotLoggedIn, (req, res, next) => {
+  console.log('Login:',1,' post /login');
+
   passport.authenticate('local', (authError, user, info) => {
-    console.log('----------/login auth', passport.count++);
+    console.log('Login:', 4,' authenticate ok or fail');
     if (authError) {
       console.error(authError);
       return next(authError);
@@ -38,11 +40,13 @@ router.post('/login', isNotLoggedIn, (req, res, next) => {
     if (!user) {
       return res.redirect(`/?loginError=${info.message}`);
     }
+    console.log('Login:', 5,' req.login()');
     return req.login(user, (loginError) => {
       if (loginError) {
         console.error(loginError);
         return next(loginError);
       }
+      console.log('Login:', 7,' response ok');
       return res.send('login ok : '+ user.userkey);
     });
   })(req, res, next); // 미들웨어 내의 미들웨어에는 (req, res, next)를 붙입니다.
