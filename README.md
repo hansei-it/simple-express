@@ -1,3 +1,22 @@
+10. 로그인 사용자만 권한 패스 접근 확인
+
+server.js 파일 수정( 패스 /data 의 로그인 사용자만 허용하도록 수정 )
+const { isLoggedIn, isNotLoggedIn } = require('./lib/middlewares');
+app.use('/data', isLoggedIn, dataRouter);
+
+라우트 로그아웃 기능을 위한
+/routes/auth.js 파일의 router.get('/logout') 라우트 수정.
+  req.logout(()=>{
+    res.send('logout ok');
+  });  
+
+postman 사용 테스트
+회원 가입:  POST (/auth/join) userkey = a password = a
+로그인: POST (/auth/login) userkey = a password = a
+로그아웃: GET (/auth/logout)
+
+로그인시에만 /data 패스, /data/a1, /data/a2패스 허용
+
 9. 회원등록 및 로그인 처리를 위한 passport 모듈 추가 및 구현
 
 npm install passport passport-local bcrypt 설치

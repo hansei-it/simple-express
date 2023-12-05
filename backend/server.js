@@ -16,6 +16,7 @@ const test2Router = require('./routes/test2');
 const dataRouter = require('./routes/data');
 const passportConfig = require('./passport');
 const authRouter = require('./routes/auth');
+const { isLoggedIn, isNotLoggedIn } = require('./lib/middlewares');
 
 passportConfig(); // 패스포트 설정
 
@@ -54,7 +55,7 @@ app.use(passport.session());    // req.session 객체에 passport 정보 저장
 app.use('/', indexRouter);
 app.use('/test1', test1Router);
 app.use('/test2', test2Router);
-app.use('/data', dataRouter);
+app.use('/data', isLoggedIn, dataRouter);
 app.use('/auth', authRouter);
 
 app.use((req, res, next) => {
